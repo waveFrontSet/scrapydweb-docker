@@ -6,7 +6,8 @@ ARG SCRAPYDWEB_VERSION="1.6.0"
 RUN apk --no-cache add --virtual build-dependencies \
  && pip install --no-cache-dir \
    scrapydweb==$SCRAPYDWEB_VERSION \
- && apk del build-dependencies
-
+ && apk del build-dependencies \
+ && apk add \
+   --no-cache tzdata
 EXPOSE 5000
 ENTRYPOINT ["scrapydweb"]
